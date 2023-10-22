@@ -1,0 +1,67 @@
+﻿@model mis_421_assignment_3.Models.MovieDetailsVM
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Movie</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Movie.Title)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Movie.Title)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Movie.IMDBHyperlink)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Movie.IMDBHyperlink)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Movie.Genre)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Movie.Genre)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Movie.YearOfRelease)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Movie.YearOfRelease)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Movie.Poster)
+        </dt>
+        <dd class = "col-sm-10">
+            <img height="150" src="@Url.Action("GetMoviePoster", "Movies", new {id = Model.Movie.Id})" />
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Movie.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+<h2>Top 100 Reddit Posts Overall Expressing @Model.SentimentScore% @Model.OverallSentiment Sentiment about @Model.Movie.Title *Zero Scores Not Included in Overall Analyzed Sentiment Calculation</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Reddit Post</th>
+            <th>Sentiment Score</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var post in Model.RedditPosts.Take(100))
+        {
+            <tr>
+                <td>@post.Content</td>
+                <td>@post.SentimentScore</td>
+            </tr>
+        }
+    </tbody>
+</table>
