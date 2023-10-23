@@ -31,9 +31,10 @@
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Actor.IMDBHyperlink)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Actor.IMDBHyperlink)
+        <dd class="col-sm-10">
+            <a href="@(Model.Actor.IMDBHyperlink.StartsWith("http://") || Model.Actor.IMDBHyperlink.StartsWith("https://") ? Model.Actor.IMDBHyperlink : "http://" + Model.Actor.IMDBHyperlink)" target="_blank">@Model.Actor.IMDBHyperlink</a>
         </dd>
+
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Actor.Photo)
         </dt>

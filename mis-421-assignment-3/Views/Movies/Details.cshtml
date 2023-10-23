@@ -20,7 +20,7 @@
             @Html.DisplayNameFor(model => model.Movie.IMDBHyperlink)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Movie.IMDBHyperlink)
+            <a href="@(Model.Movie.IMDBHyperlink.StartsWith("http://") || Model.Movie.IMDBHyperlink.StartsWith("https://") ? Model.Movie.IMDBHyperlink : "http://" + Model.Movie.IMDBHyperlink)" target="_blank">@Model.Movie.IMDBHyperlink</a>
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Movie.Genre)

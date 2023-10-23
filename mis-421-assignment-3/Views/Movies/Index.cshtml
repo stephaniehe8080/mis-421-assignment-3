@@ -37,7 +37,7 @@
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IMDBHyperlink)
+                <a href="@(item.IMDBHyperlink.StartsWith("http://") || item.IMDBHyperlink.StartsWith("https://") ? item.IMDBHyperlink : "http://" + item.IMDBHyperlink)" target="_blank">@item.IMDBHyperlink</a>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Genre)
